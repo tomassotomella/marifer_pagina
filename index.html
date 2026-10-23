@@ -3,95 +3,1696 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción</title>
+    <title>Marifer Delicias | Emprendimiento Familiar sobre Ruedas</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* === PALETA EXCLUSIVA: AZUL DEL CARRO Y CELESTES REFRESCANTES === */
+            --blue-car: #0042b0;            /* Azul intenso característico del carro */
+            --blue-car-hover: #003692;
+            --blue-deep: #001f54;           /* Azul noche profundo */
+            --blue-darkest: #001233;
+            
+            /* Tonos celestes refrescantes */
+            --celeste-neon: #0aabf1;        /* Celeste hielo de las letras MARIFER */
+            --celeste-bright: #38bdf8;      /* Celeste cielo brillante */
+            --celeste-soft: #c8f0fc;        /* Celeste claro */
+            --celeste-bg: #eaf8fd;          /* Fondo suave hielo */
+            
+            /* Neutros */
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border-light: rgba(10, 171, 241, 0.25);
+            
+            /* WhatsApp brand color */
+            --whatsapp-green: #25d366;
+            --whatsapp-hover: #20ba5a;
+            
+            /* Sombras y radios */
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-card: 0 12px 32px rgba(0, 31, 84, 0.18);
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, var(--blue-car) 0%, #003799 40%, var(--blue-deep) 100%);
+            color: var(--white);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 31, 84, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 2px solid var(--celeste-neon);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        /* Marco sobrepuesto sobre el logo como un sello/emblema con relieve */
+        .brand-logo-frame {
+            position: relative;
+            background: #ffffff;
+            padding: 4px 8px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 16px rgba(10, 171, 241, 0.5);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* El marco se sobrepone directamente encima del logo con z-index 5 */
+        .brand-logo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid var(--celeste-neon);
+            border-radius: 40px;
+            pointer-events: none;
+            z-index: 5;
+            box-shadow: inset 0 0 8px rgba(10, 171, 241, 0.7), 0 0 14px rgba(56, 189, 248, 0.85);
+        }
+
+        .brand-link:hover .brand-logo-frame {
+            transform: scale(1.05);
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.9);
+        }
+
+        .brand-logo-img {
+            height: 52px;
+            width: auto;
+            max-width: 110px;
+            object-fit: contain;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-text h1 {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text h1 span {
+            color: var(--celeste-bright);
+        }
+
+        .brand-text small {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--celeste-soft);
+            font-weight: 400;
+        }
+
+        /* Menú */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 16px;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--celeste-bright);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Enlace a Instagram destacado en el header */
+        .nav-link-instagram {
+            background: rgba(10, 171, 241, 0.16);
+            border: 1.5px solid var(--celeste-neon);
+            color: var(--celeste-soft) !important;
+            border-radius: 50px;
+            padding: 8px 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            box-shadow: 0 0 12px rgba(10, 171, 241, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link-instagram svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .nav-link-instagram:hover {
+            background: var(--celeste-neon);
+            color: var(--blue-deep) !important;
+            box-shadow: 0 0 18px rgba(10, 171, 241, 0.65);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--white);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* --- CONTENEDORES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .badge-celeste {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(10, 171, 241, 0.18);
+            border: 1px solid var(--celeste-neon);
+            color: var(--celeste-soft);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: var(--celeste-bright);
+        }
+
+        .section-desc {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--celeste-soft);
+            font-size: 1.05rem;
+        }
+
+        /* --- SECCIÓN QUIÉNES SOMOS (CON FOTO DEL CARRO DE FONDO) --- */
+        .intro-section {
+            padding: 75px 0 90px;
+            position: relative;
+            background: 
+                linear-gradient(135deg, rgba(0, 25, 75, 0.92) 0%, rgba(0, 66, 176, 0.84) 50%, rgba(0, 20, 52, 0.94) 100%),
+                url('images/carro-plaza-fondo.jpeg') center center / cover no-repeat;
+            border-bottom: 2px solid var(--celeste-neon);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .intro-content h2 {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 3.2rem;
+            color: var(--white);
+            margin-bottom: 22px;
+            line-height: 1.15;
+            text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro-content h2 span {
+            color: var(--celeste-bright);
+        }
+
+        .intro-quote-box {
+            background: rgba(0, 25, 70, 0.88);
+            border: 2px solid var(--celeste-neon);
+            border-left: 6px solid var(--celeste-bright);
+            border-radius: var(--radius-md);
+            padding: 28px 30px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .intro-quote-box p {
+            font-size: 1.25rem;
+            color: var(--white);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .intro-features-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: rgba(0, 31, 84, 0.82);
+            border: 1px solid rgba(10, 171, 241, 0.35);
+            border-radius: var(--radius-sm);
+            padding: 16px 14px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(10, 171, 241, 0.22);
+            border-color: var(--celeste-bright);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .feature-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--celeste-bright);
+            margin-bottom: 4px;
+        }
+
+        .feature-text {
+            font-size: 0.8rem;
+            color: var(--celeste-soft);
+        }
+
+        /* Foto de Quiénes Somos */
+        .intro-photo-wrap {
+            position: relative;
+        }
+
+        .photo-inner-border {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 4px solid var(--celeste-neon);
+            box-shadow: 0 16px 40px rgba(0, 15, 45, 0.6), 0 0 24px rgba(10, 171, 241, 0.4);
+            background: var(--blue-deep);
+        }
+
+        .photo-inner-border img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .photo-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(0, 25, 70, 0.95) 0%, rgba(0, 25, 70, 0.7) 65%, transparent 100%);
+            padding: 24px 20px 18px;
+            color: var(--white);
+        }
+
+        .photo-label h4 {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1.25rem;
+            color: var(--celeste-bright);
+            margin-bottom: 4px;
+        }
+
+        .photo-label p {
+            font-size: 0.86rem;
+            color: var(--celeste-soft);
+        }
+
+        /* ==================== ESTILOS DEL CARRUSEL INFINITO AUTOMÁTICO ==================== */
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 0 20px;
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+            width: 100%;
+            border-radius: var(--radius-md);
+            padding: 14px 0 22px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .carousel-viewport:active {
+            cursor: grabbing;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            will-change: transform;
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Botones de navegación */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-60%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0, 31, 84, 0.95);
+            border: 2px solid var(--celeste-neon);
+            color: var(--celeste-bright);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
         }
 
-        .container {
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .carousel-nav-btn:hover {
+            background: var(--celeste-neon);
+            color: var(--blue-deep);
+            box-shadow: 0 0 22px rgba(10, 171, 241, 0.8);
+            transform: translateY(-60%) scale(1.1);
         }
 
-        .icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite ease-in-out;
+        .carousel-nav-btn.prev {
+            left: -22px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            color: #ffcc00;
+        .carousel-nav-btn.next {
+            right: -22px;
         }
 
-        p {
-            font-size: 1.1rem;
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 25px;
+        .carousel-nav-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2.5;
         }
 
-        .loader {
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+        /* Puntos indicadores */
+        .carousel-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1.5px solid var(--celeste-neon);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--celeste-bright);
+            transform: scale(1.35);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+        }
+
+        /* Tarjeta de Producto */
+        .delicias-section {
+            background: rgba(0, 25, 70, 0.55);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .delicia-card {
+            background: #ffffff;
+            color: var(--text-dark);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            height: 8px;
-            margin-top: 20px;
+            box-shadow: var(--shadow-card);
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
         }
 
-        .loader-bar {
-            width: 60%;
+        .delicia-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--celeste-neon);
+            box-shadow: 0 16px 36px rgba(10, 171, 241, 0.25);
+        }
+
+        .delicia-img-frame {
+            height: 200px;
+            position: relative;
+            background: var(--celeste-bg);
+            overflow: hidden;
+        }
+
+        .delicia-img-frame img {
+            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, #ffcc00, #ff8800);
-            border-radius: 10px;
-            animation: progress 2.5s infinite ease-in-out;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            pointer-events: none;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .delicia-card:hover .delicia-img-frame img {
+            transform: scale(1.06);
         }
 
-        @keyframes progress {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
+        .delicia-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--blue-car);
+            color: var(--white);
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 50px;
+            border: 1px solid var(--celeste-bright);
+        }
+
+        .delicia-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .delicia-title {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1.35rem;
+            color: var(--blue-car);
+            margin-bottom: 8px;
+        }
+
+        .delicia-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.55;
+            flex-grow: 1;
+        }
+
+        .delicia-info-box {
+            background: var(--celeste-bg);
+            border: 1px solid rgba(10, 171, 241, 0.2);
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            color: #1e3a8a;
+        }
+
+        .delicia-info-box strong {
+            display: block;
+            color: var(--blue-car);
+            margin-bottom: 3px;
+        }
+
+        /* Tarjeta de Galería */
+        .gallery-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 260px;
+            border: 2px solid rgba(10, 171, 241, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--celeste-bright);
+            box-shadow: 0 12px 30px rgba(10, 171, 241, 0.35);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 25, 70, 0.92) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* --- DÓNDE ENCONTRARNOS / FERIA DE LAS PULGAS Y HORARIOS --- */
+        .location-section {
+            background: rgba(0, 20, 55, 0.65);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .location-container-card {
+            background: #ffffff;
+            color: var(--text-dark);
+            border-radius: var(--radius-lg);
+            padding: 45px 40px;
+            box-shadow: var(--shadow-card);
+            border: 2px solid var(--celeste-neon);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 2.1rem;
+            color: var(--blue-car);
+            margin-bottom: 12px;
+        }
+
+        .location-info p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        .location-badge-spot {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--celeste-bg);
+            border: 1px solid var(--celeste-neon);
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+        }
+
+        .spot-icon {
+            font-size: 2.2rem;
+            color: var(--blue-car);
+            flex-shrink: 0;
+        }
+
+        .spot-text strong {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--blue-car);
+        }
+
+        .spot-text span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .schedule-badge-spot {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+
+        .schedule-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .schedule-text strong {
+            display: block;
+            font-size: 1.05rem;
+            color: #166534;
+        }
+
+        .schedule-text span {
+            font-size: 0.9rem;
+            color: #15803d;
+            font-weight: 500;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--blue-car);
+            color: var(--white) !important;
+            padding: 14px 26px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 66, 176, 0.3);
+            border: 2px solid var(--celeste-neon);
+        }
+
+        .btn-maps:hover {
+            background: var(--celeste-neon);
+            color: var(--blue-deep) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 171, 241, 0.5);
+        }
+
+        .location-extra-box {
+            background: var(--celeste-bg);
+            border: 1px solid rgba(10, 171, 241, 0.3);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .location-extra-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .extra-icon {
+            font-size: 1.3rem;
+            color: var(--blue-car);
+            line-height: 1;
+        }
+
+        .extra-text strong {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--blue-car);
+            margin-bottom: 2px;
+        }
+
+        .extra-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FORMULARIO WHATSAPP PARA EVENTOS --- */
+        .event-form-section {
+            background: linear-gradient(180deg, rgba(0, 20, 55, 0.8) 0%, rgba(0, 31, 84, 0.95) 100%);
+            border-top: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .event-form-card {
+            background: #ffffff;
+            color: var(--text-dark);
+            border-radius: var(--radius-lg);
+            padding: 45px 40px;
+            box-shadow: var(--shadow-card);
+            border: 2px solid var(--celeste-neon);
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .event-form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .event-form-header h3 {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 2.2rem;
+            color: var(--blue-car);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .event-form-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .whatsapp-redirect-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: all 0.25s ease;
+            background: #f8fafc;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--celeste-neon);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(10, 171, 241, 0.18);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 95px;
+        }
+
+        .btn-whatsapp-submit {
+            background: var(--whatsapp-green);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 28px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            width: 100%;
+        }
+
+        .btn-whatsapp-submit:hover {
+            background: var(--whatsapp-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-whatsapp-submit svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .form-privacy-note {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background: var(--blue-darkest);
+            border-top: 2px solid var(--celeste-neon);
+            padding: 35px 0 22px;
+            text-align: center;
+            color: var(--celeste-soft);
+            font-size: 0.88rem;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .footer-logo-wrap .logo-frame {
+            position: relative;
+            background: #ffffff;
+            padding: 3px 8px;
+            border-radius: 40px;
+            display: inline-flex;
+            overflow: hidden;
+        }
+
+        .footer-logo-wrap .logo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--celeste-neon);
+            border-radius: 40px;
+            pointer-events: none;
+        }
+
+        .footer-logo-wrap img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .footer-logo-wrap span {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1.35rem;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--celeste-soft);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--celeste-bright);
+        }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 968px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .intro-quote-box {
+                text-align: left;
+            }
+            .intro-photo-wrap {
+                max-width: 440px;
+                margin: 0 auto;
+            }
+            .location-container-card {
+                grid-template-columns: 1fr;
+                padding: 30px 22px;
+            }
+            .event-form-card {
+                padding: 30px 20px;
+            }
+            .carousel-nav-btn.prev {
+                left: -8px;
+            }
+            .carousel-nav-btn.next {
+                right: -8px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .carousel-nav-btn {
+                width: 38px;
+                height: 38px;
+            }
+            .carousel-nav-btn.prev {
+                left: 2px;
+            }
+            .carousel-nav-btn.next {
+                right: 2px;
+            }
+            .carousel-nav-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--blue-deep);
+                flex-direction: column;
+                padding: 20px;
+                gap: 12px;
+                border-bottom: 2px solid var(--celeste-neon);
+                display: none;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .intro-content h2 {
+                font-size: 2.3rem;
+            }
+            .intro-features-row {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .whatsapp-redirect-form {
+                grid-template-columns: 1fr;
+            }
+            .event-form-header h3 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="icon">🚧</div>
-        <h1>Sitio en Construcción</h1>
-        <p>Estamos trabajando para ofrecerte una mejor experiencia. Volveremos muy pronto con novedades.</p>
-        
-        <div class="loader">
-            <div class="loader-bar"></div>
-        </div>
-    </div>
+    <!-- ==================== HEADER CON LOGO Y ENLACE A INSTAGRAM ==================== -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#quienes-somos" class="brand-link" title="Marifer Delicias">
+                <!-- Marco sobrepuesto con relieve de borde celeste sobre el logo -->
+                <div class="brand-logo-frame">
+                    <img src="images/logo.jpeg" alt="Logo oficial de Marifer Delicias" class="brand-logo-img">
+                </div>
+                <div class="brand-text">
+                    <h1>Marifer <span>Delicias</span></h1>
+                    <small>Emprendimiento Familiar • Los Ángeles</small>
+                </div>
+            </a>
 
+            <!-- Botón menú móvil -->
+            <button class="mobile-toggle" id="menuToggle" aria-label="Abrir navegación">☰</button>
+
+            <!-- Menú informativo con enlace oficial a Instagram -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#quienes-somos" class="nav-link">Quiénes Somos</a></li>
+                <li><a href="#delicias" class="nav-link">Nuestras Delicias</a></li>
+                <li><a href="#nuestro-carro" class="nav-link">Nuestro Carro</a></li>
+                <li><a href="#ubicacion" class="nav-link">Dónde Encontrarnos</a></li>
+                <li><a href="#contacto-eventos" class="nav-link">Tu Evento</a></li>
+                <li>
+                    <a href="https://www.instagram.com/marifer_delicias/" target="_blank" rel="noopener noreferrer" class="nav-link nav-link-instagram" title="Marifer Delicias (@marifer_delicias) • Fotos y videos de Instagram">
+                        <!-- Icono SVG de Instagram -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        <span>@marifer_delicias</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ==================== QUIÉNES SOMOS (CON FOTO DEL CARRO DE FONDO) ==================== -->
+    <section class="intro-section" id="quienes-somos">
+        <div class="container">
+            <div class="intro-grid">
+                
+                <!-- Columna de texto -->
+                <div class="intro-content">
+                    <div class="badge-celeste">
+                        <span>❄️</span> Emprendimiento Familiar de Los Ángeles
+                    </div>
+                    
+                    <h2>Quiénes <span>Somos</span></h2>
+
+                    <!-- Texto exacto solicitado por el usuario -->
+                    <div class="intro-quote-box">
+                        <p>
+                            Somos un emprendimiento familiar de Los Ángeles con el propósito de endulzar cada uno de tus momentos. Nos dedicamos a preparar productos deliciosos y de alta calidad, siempre con el cariño de la cocina de casa y a precios accesibles para toda nuestra comunidad.
+                        </p>
+                    </div>
+
+                    <!-- Pilares informativos -->
+                    <div class="intro-features-row">
+                        <div class="feature-card">
+                            <span class="feature-icon">🍧</span>
+                            <div class="feature-title">Refrescante</div>
+                            <div class="feature-text">El toque frío ideal</div>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🏡</span>
+                            <div class="feature-title">Cariño de Casa</div>
+                            <div class="feature-text">Recetas familiares</div>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🤝</span>
+                            <div class="feature-title">Para Todos</div>
+                            <div class="feature-text">Precios accesibles</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto del vendedor / fundador para Quiénes Somos -->
+                <div class="intro-photo-wrap">
+                    <div class="photo-inner-border">
+                        <img src="images/vendedor.jpeg" alt="Fundador y encargado de Marifer Delicias atendiendo en el carro">
+                        <div class="photo-label">
+                            <h4>Atención Cálida y Cercana</h4>
+                            <p>Esperándote en cada jornada con la mejor energía y dedicación.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NUESTRAS DELICIAS (CARRUSEL AUTOMÁTICO EN BUCLE) ==================== -->
+    <section class="section-padding delicias-section" id="delicias">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge-celeste">Nuestra Variedad</span>
+                <h2 class="section-title">Nuestras <span>Delicias</span></h2>
+                <p class="section-desc">
+                    Descubre de forma continua cada una de nuestras ricas preparaciones pensadas para disfrutar en familia.
+                </p>
+            </div>
+
+            <div class="carousel-wrapper" id="deliciasCarousel">
+                <!-- Botón previo -->
+                <button class="carousel-nav-btn prev" aria-label="Ver anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Ventana visible -->
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <!-- 1. Granizados -->
+                        <div class="delicia-card">
+                            <div class="delicia-img-frame">
+                                <img src="images/granizados.jpeg" alt="Granizados bien fríos">
+                                <span class="delicia-tag">¡El Más Frío!</span>
+                            </div>
+                            <div class="delicia-body">
+                                <h4 class="delicia-title">Granizados Refrescantes</h4>
+                                <p class="delicia-desc">
+                                    El alivio perfecto para los días soleados. Granizados ultra fríos disponibles en variedad de sabores, servidos simples o mixtos en vasos de 250cc y 350cc.
+                                </p>
+                                <div class="delicia-info-box">
+                                    <strong>Variedad de sabores:</strong>
+                                    Frutilla, piña, limón, mango, menta y más combinaciones.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Helado Soft -->
+                        <div class="delicia-card">
+                            <div class="delicia-img-frame">
+                                <img src="images/helado-soft.jpeg" alt="Helados soft cremosos">
+                                <span class="delicia-tag">Cremoso</span>
+                            </div>
+                            <div class="delicia-body">
+                                <h4 class="delicia-title">Helado Soft</h4>
+                                <p class="delicia-desc">
+                                    Suave, cremoso y servido en crujientes conos de barquillo. El clásico favorito de chicos y grandes con una textura irresistible.
+                                </p>
+                                <div class="delicia-info-box">
+                                    <strong>Opciones:</strong>
+                                    Vainilla, chocolate o combinado mixto tradicional.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Churros -->
+                        <div class="delicia-card">
+                            <div class="delicia-img-frame">
+                                <img src="images/churros-placeholder.jpeg" alt="Churros crujientes y dulces">
+                                <span class="delicia-tag">Recién Hechos</span>
+                            </div>
+                            <div class="delicia-body">
+                                <h4 class="delicia-title">Churros</h4>
+                                <p class="delicia-desc">
+                                    Deliciosos churros doraditos y crujientes por fuera, suaves por dentro, espolvoreados con azúcar flor o acompañados con salsas dulces para deleitarte.
+                                </p>
+                                <div class="delicia-info-box">
+                                    <strong>Tradición dulce:</strong>
+                                    Servidos calentitos, rellenos con manjar, ideales para la caminata.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Calzones Rotos -->
+                        <div class="delicia-card">
+                            <div class="delicia-img-frame">
+                                <img src="images/calzones-rotos-placeholder.jpeg" alt="Calzones rotos tradicionales">
+                                <span class="delicia-tag">De la Casa</span>
+                            </div>
+                            <div class="delicia-body">
+                                <h4 class="delicia-title">Calzones Rotos</h4>
+                                <p class="delicia-desc">
+                                    Preparados con la receta casera de siempre. Masita suave y esponjosa, frita a punto y cubierta con una generosa lluvia de azúcar flor.
+                                </p>
+                                <div class="delicia-info-box">
+                                    <strong>Sabor hogareño:</strong>
+                                    El sabor típico de la cocina chilena hecho con cariño.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón siguiente -->
+                <button class="carousel-nav-btn next" aria-label="Ver siguiente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Puntos indicadores -->
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NUESTRO CARRO EN ACCIÓN (CARRUSEL FOTOGRÁFICO EN BUCLE) ==================== -->
+    <section class="section-padding" id="nuestro-carro">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge-celeste">Sobre Ruedas</span>
+                <h2 class="section-title">El Carro de <span>Marifer</span></h2>
+                <p class="section-desc">
+                    Recorrido continuo de nuestro carro azul y el ambiente que compartimos en ferias y eventos.
+                </p>
+            </div>
+
+            <div class="carousel-wrapper" id="carroCarousel">
+                <!-- Botón previo -->
+                <button class="carousel-nav-btn prev" aria-label="Ver anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Ventana visible -->
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <!-- Foto 1 -->
+                        <div class="gallery-card">
+                            <img src="images/carro-frontal.jpeg" alt="Carro azul Marifer Delicias">
+                            <div class="gallery-overlay">
+                                <p>Carro azul totalmente equipado</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 2 -->
+                        <div class="gallery-card">
+                            <img src="images/carro-plaza-fondo.jpeg" alt="Carro en el sector de Los Ángeles">
+                            <div class="gallery-overlay">
+                                <p>Presentes en Los Ángeles con toldo y atención</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 3 -->
+                        <div class="gallery-card">
+                            <img src="images/feria-comunal.jpeg" alt="Feria comunal con el carro">
+                            <div class="gallery-overlay">
+                                <p>Acompañando a las familias en paseos de fin de semana</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 4 -->
+                        <div class="gallery-card">
+                            <img src="images/equipo-marifer.jpeg" alt="Equipo de Marifer Delicias">
+                            <div class="gallery-overlay">
+                                <p>Equipo con la mejor disposición y sonrisa</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 5 -->
+                        <div class="gallery-card">
+                            <img src="images/carro-interior.jpeg" alt="Equipamiento y máquinas de granizados">
+                            <div class="gallery-overlay">
+                                <p>Maquinarias de granizados y helados de alta calidad</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 6 -->
+                        <div class="gallery-card">
+                            <img src="images/carro-letrero-plaza.jpeg" alt="Letrero oficial de Marifer Delicias">
+                            <div class="gallery-overlay">
+                                <p>Letreros y atención en ferias comunales</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón siguiente -->
+                <button class="carousel-nav-btn next" aria-label="Ver siguiente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Puntos indicadores -->
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DÓNDE ENCONTRARNOS (FERIA DE LAS PULGAS Y HORARIOS) ==================== -->
+    <section class="section-padding location-section" id="ubicacion">
+        <div class="container">
+            <div class="location-container-card">
+                
+                <div class="location-info">
+                    <h3>Dónde <span>Encontrarnos</span></h3>
+                    <p>
+                        Ven a disfrutar de nuestros granizados, helados soft, churros y calzones rotos en nuestro punto habitual en Los Ángeles:
+                    </p>
+
+                    <!-- Tarjeta de dirección oficial -->
+                    <div class="location-badge-spot">
+                        <div class="spot-icon">📍</div>
+                        <div class="spot-text">
+                            <strong>Feria de Las Pulgas</strong>
+                            <span>Los Ángeles, Región del Biobío, Chile</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de horarios -->
+                    <div class="schedule-badge-spot">
+                        <div class="schedule-icon">⏰</div>
+                        <div class="schedule-text">
+                            <strong>Días de Atención:</strong>
+                            <span>Miércoles, Sábados y Domingos de 8:00 AM a 2:30 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- Botón a Google Maps -->
+                    <div>
+                        <a href="https://maps.app.goo.gl/PdcbWc6gLsw3uYqy5" target="_blank" rel="noopener noreferrer" class="btn-maps">
+                            <span>🗺️</span> Abrir Ubicación en Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="location-extra-box">
+                    <div class="location-extra-item">
+                        <span class="extra-icon">🚚</span>
+                        <div class="extra-text">
+                            <strong>Carro Azul Marifer Delicias</strong>
+                            <span>Nos reconoces fácilmente por el color azul de nuestro carro y los letreros de granizados y helados.</span>
+                        </div>
+                    </div>
+
+                    <div class="location-extra-item">
+                        <span class="extra-icon">📸</span>
+                        <div class="extra-text">
+                            <strong>Síguenos en Instagram</strong>
+                            <span>Conoce nuestras historias y novedades en <a href="https://www.instagram.com/marifer_delicias/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-car); font-weight: 600;">@marifer_delicias</a></span>
+                        </div>
+                    </div>
+
+                    <div class="location-extra-item">
+                        <span class="extra-icon">👨‍👩‍👧‍👦</span>
+                        <div class="extra-text">
+                            <strong>Ambiente Familiar</strong>
+                            <span>Preparaciones frescas y hechas con cariño para grandes y chicos.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FORMULARIO WHATSAPP PARA EVENTOS ==================== -->
+    <section class="section-padding event-form-section" id="contacto-eventos">
+        <div class="container">
+            <div class="event-form-card">
+                <div class="event-form-header">
+                    <span class="badge-celeste" style="background: var(--celeste-bg); color: var(--blue-car); border-color: var(--celeste-neon);">Contáctanos</span>
+                    <h3>¿Quieres que Marifer participe en tu evento?</h3>
+                    <p>Completa los datos y te redirigiremos a nuestro WhatsApp para coordinar directamente con nosotros.</p>
+                </div>
+
+                <form class="whatsapp-redirect-form" id="eventForm">
+                    <div class="form-field">
+                        <label for="eventName">Tu Nombre o Encargado(a):</label>
+                        <input type="text" id="eventName" class="form-input" placeholder="Ej: Carolina Morales" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="eventType">Tipo de Evento:</label>
+                        <input type="text" id="eventType" class="form-input" placeholder="Ej: Cumpleaños, Kermesse, Evento Comunitario..." required>
+                    </div>
+
+                    <div class="form-field form-full-width">
+                        <label for="eventDate">Fecha estimada y Lugar:</label>
+                        <input type="text" id="eventDate" class="form-input" placeholder="Ej: Sábado 15 de Noviembre en Los Ángeles" required>
+                    </div>
+
+                    <div class="form-field form-full-width">
+                        <label for="eventNotes">Mensaje o detalle adicional (opcional):</label>
+                        <textarea id="eventNotes" class="form-input" placeholder="Cuéntanos cantidad aproximada de personas o lo que te gustaría incluir de nuestro carro..."></textarea>
+                    </div>
+
+                    <div class="form-full-width" style="margin-top: 10px;">
+                        <button type="submit" class="btn-whatsapp-submit">
+                            <!-- Icono SVG de WhatsApp -->
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.886-9.887 9.886m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            <span>Enviar mensaje a WhatsApp (+56 9 5069 1959)</span>
+                        </button>
+                    </div>
+
+                    <div class="form-full-width form-privacy-note">
+                        Al enviar, se abrirá directamente tu aplicación de WhatsApp con el mensaje redactado para iniciar la conversación.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-logo-wrap">
+                <div class="logo-frame">
+                    <img src="images/logo.jpeg" alt="Marifer Delicias Logo">
+                </div>
+                <span>Marifer Delicias</span>
+            </div>
+            <div class="footer-links">
+                <a href="#quienes-somos">Quiénes Somos</a>
+                <a href="#delicias">Nuestras Delicias</a>
+                <a href="#nuestro-carro">Nuestro Carro</a>
+                <a href="#ubicacion">Feria de Las Pulgas</a>
+                <a href="#contacto-eventos">Participar en Eventos</a>
+                <a href="https://www.instagram.com/marifer_delicias/" target="_blank" rel="noopener noreferrer">Instagram @marifer_delicias</a>
+            </div>
+            <p>© 2026 Marifer Delicias. Emprendimiento familiar en Feria de Las Pulgas, Los Ángeles, Chile. Contacto: +56 9 5069 1959</p>
+        </div>
+    </footer>
+
+    <!-- Script de navegación móvil, carruseles infinitos y WhatsApp -->
+    <script>
+        // Navegación móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ==================== CARRUSEL EN BUCLE INFINITO Y AUTOMÁTICO ====================
+        function createInfiniteCarousel({ wrapperId, autoplayInterval = 3200 }) {
+            const wrapper = document.getElementById(wrapperId);
+            if (!wrapper) return;
+
+            const viewport = wrapper.querySelector('.carousel-viewport');
+            const track = wrapper.querySelector('.carousel-track');
+            const prevBtn = wrapper.querySelector('.carousel-nav-btn.prev');
+            const nextBtn = wrapper.querySelector('.carousel-nav-btn.next');
+            const dotsContainer = wrapper.querySelector('.carousel-dots');
+
+            const originalCards = Array.from(track.children);
+            const totalOriginals = originalCards.length;
+            if (totalOriginals === 0) return;
+
+            // Clones para permitir el bucle infinito sin interrupciones en ambos sentidos
+            const clonesBefore = originalCards.map(c => c.cloneNode(true));
+            const clonesAfter = originalCards.map(c => c.cloneNode(true));
+
+            clonesBefore.reverse().forEach(c => track.insertBefore(c, track.firstChild));
+            clonesAfter.forEach(c => track.appendChild(c));
+
+            const allCards = Array.from(track.children);
+            let currentIndex = totalOriginals; // Comenzar en la primera tarjeta original
+            let isTransitioning = false;
+            let autoplayTimer = null;
+            const gap = 20;
+
+            // Generar puntos indicadores solo para la cantidad real de tarjetas
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalOriginals; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Ir al elemento ${i + 1}`);
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    if (isTransitioning) return;
+                    goToIndex(totalOriginals + i);
+                    resetAutoplay();
+                });
+                dotsContainer.appendChild(dot);
+            }
+            const dots = Array.from(dotsContainer.querySelectorAll('.carousel-dot'));
+
+            function getItemsPerView() {
+                const w = window.innerWidth;
+                if (w <= 680) return 1;
+                if (w <= 968) return 2;
+                return 3;
+            }
+
+            function updateLayout(animate = false) {
+                const itemsPerView = getItemsPerView();
+                const viewportWidth = viewport.getBoundingClientRect().width;
+                const cardWidth = (viewportWidth - (itemsPerView - 1) * gap) / itemsPerView;
+
+                allCards.forEach(card => {
+                    card.style.width = `${cardWidth}px`;
+                });
+
+                const offset = -currentIndex * (cardWidth + gap);
+                if (!animate) {
+                    track.style.transition = 'none';
+                } else {
+                    track.style.transition = 'transform 0.48s cubic-bezier(0.25, 1, 0.5, 1)';
+                }
+                track.style.transform = `translateX(${offset}px)`;
+
+                // Actualizar punto activo
+                const realIndex = ((currentIndex - totalOriginals) % totalOriginals + totalOriginals) % totalOriginals;
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === realIndex);
+                });
+            }
+
+            function goToIndex(index) {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex = index;
+                updateLayout(true);
+            }
+
+            function next() {
+                if (isTransitioning) return;
+                goToIndex(currentIndex + 1);
+            }
+
+            function prev() {
+                if (isTransitioning) return;
+                goToIndex(currentIndex - 1);
+            }
+
+            // Cuando termina la animación de transición, si sobrepasó los límites, se reinicia instantáneamente en silencio
+            track.addEventListener('transitionend', () => {
+                isTransitioning = false;
+                if (currentIndex >= totalOriginals * 2) {
+                    currentIndex -= totalOriginals;
+                    updateLayout(false);
+                } else if (currentIndex < totalOriginals) {
+                    currentIndex += totalOriginals;
+                    updateLayout(false);
+                }
+            });
+
+            // Botones manuales
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prev();
+                    resetAutoplay();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    next();
+                    resetAutoplay();
+                });
+            }
+
+            // Autoplay (avance automático cada X segundos)
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(() => {
+                    next();
+                }, autoplayInterval);
+            }
+
+            function stopAutoplay() {
+                if (autoplayTimer) {
+                    clearInterval(autoplayTimer);
+                    autoplayTimer = null;
+                }
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            // Pausar con el mouse para que no se mueva mientras el usuario lee
+            wrapper.addEventListener('mouseenter', stopAutoplay);
+            wrapper.addEventListener('mouseleave', startAutoplay);
+
+            // Soporte para gestos táctiles (Swipe) en smartphones
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let isSwiping = false;
+
+            viewport.addEventListener('touchstart', (e) => {
+                stopAutoplay();
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                isSwiping = true;
+            }, { passive: true });
+
+            viewport.addEventListener('touchend', (e) => {
+                if (!isSwiping) return;
+                isSwiping = false;
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                // Si fue un deslizamiento horizontal marcado
+                if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX < 0) {
+                        next();
+                    } else {
+                        prev();
+                    }
+                }
+                startAutoplay();
+            }, { passive: true });
+
+            // Ajuste al redimensionar la ventana o rotar el teléfono
+            window.addEventListener('resize', () => {
+                updateLayout(false);
+            });
+
+            // Arranque inicial
+            updateLayout(false);
+            startAutoplay();
+        }
+
+        // Iniciar carruseles automáticos en bucle infinito
+        // Intervalo de 3.2s para delicias y 3.8s para fotos del carro
+        createInfiniteCarousel({ wrapperId: 'deliciasCarousel', autoplayInterval: 3200 });
+        createInfiniteCarousel({ wrapperId: 'carroCarousel', autoplayInterval: 3800 });
+
+        // Manejo del formulario de WhatsApp
+        const eventForm = document.getElementById('eventForm');
+        eventForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('eventName').value.trim();
+            const type = document.getElementById('eventType').value.trim();
+            const date = document.getElementById('eventDate').value.trim();
+            const notes = document.getElementById('eventNotes').value.trim();
+
+            let message = "¡Hola! ¿Quieres que Marifer participe en tu evento?\n\n";
+            message += "Me comunico para coordinar:\n";
+            if (name) message += "• Nombre: " + name + "\n";
+            if (type) message += "• Tipo de evento: " + type + "\n";
+            if (date) message += "• Fecha y lugar: " + date + "\n";
+            if (notes) message += "• Detalles: " + notes + "\n";
+
+            const phoneNumber = "56950691959";
+            const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
 </body>
 </html>
