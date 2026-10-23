@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio en Construcción</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #ffcc00;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .loader {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 8px;
+            margin-top: 20px;
+        }
+
+        .loader-bar {
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, #ffcc00, #ff8800);
+            border-radius: 10px;
+            animation: progress 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">🚧</div>
+        <h1>Sitio en Construcción</h1>
+        <p>Estamos trabajando para ofrecerte una mejor experiencia. Volveremos muy pronto con novedades.</p>
+        
+        <div class="loader">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+</body>
+</html>
