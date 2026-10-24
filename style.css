@@ -1,0 +1,1060 @@
+/* --- SKIP NAVIGATION (accesibilidad teclado) --- */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    background: var(--celeste-neon);
+    color: var(--blue-deep);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 9999;
+    text-decoration: none;
+}
+.skip-link:focus {
+    left: 8px;
+}
+
+:root {
+    /* === PALETA EXCLUSIVA: AZUL DEL CARRO Y CELESTES REFRESCANTES === */
+    --blue-car: #0042b0;            /* Azul intenso característico del carro */
+    --blue-car-hover: #003692;
+    --blue-deep: #001f54;           /* Azul noche profundo */
+    --blue-darkest: #001233;
+    
+    /* Tonos celestes refrescantes */
+    --celeste-neon: #0aabf1;        /* Celeste hielo de las letras MARIFER */
+    --celeste-bright: #38bdf8;      /* Celeste cielo brillante */
+    --celeste-soft: #c8f0fc;        /* Celeste claro */
+    --celeste-bg: #eaf8fd;          /* Fondo suave hielo */
+    
+    /* Neutros */
+    --white: #ffffff;
+    --text-dark: #0f172a;
+    --text-muted: #475569;
+    --border-light: rgba(10, 171, 241, 0.25);
+    
+    /* WhatsApp brand color */
+    --whatsapp-green: #25d366;
+    --whatsapp-hover: #20ba5a;
+    
+    /* Sombras y radios */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-card: 0 12px 32px rgba(0, 31, 84, 0.18);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, var(--blue-car) 0%, #003799 40%, var(--blue-deep) 100%);
+    color: var(--white);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- HEADER --- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 31, 84, 0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--celeste-neon);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--white);
+}
+
+/* Marco sobrepuesto sobre el logo como un sello/emblema con relieve */
+.brand-logo-frame {
+    position: relative;
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 16px rgba(10, 171, 241, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* El marco se sobrepone directamente encima del logo con z-index 5 */
+.brand-logo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 3px solid var(--celeste-neon);
+    border-radius: 40px;
+    pointer-events: none;
+    z-index: 5;
+    box-shadow: inset 0 0 8px rgba(10, 171, 241, 0.7), 0 0 14px rgba(56, 189, 248, 0.85);
+}
+
+.brand-link:hover .brand-logo-frame {
+    transform: scale(1.05);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.9);
+}
+
+.brand-logo-img {
+    height: 52px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-text h1 {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+.brand-text h1 span {
+    color: var(--celeste-bright);
+}
+
+.brand-text small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--celeste-soft);
+    font-weight: 400;
+}
+
+/* Menú */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 16px;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+    color: var(--celeste-bright);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Enlace a Instagram destacado en el header */
+.nav-link-instagram {
+    background: rgba(10, 171, 241, 0.16);
+    border: 1.5px solid var(--celeste-neon);
+    color: var(--celeste-soft) !important;
+    border-radius: 50px;
+    padding: 8px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(10, 171, 241, 0.35);
+    transition: all 0.3s ease;
+}
+
+.nav-link-instagram svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.nav-link-instagram:hover {
+    background: var(--celeste-neon);
+    color: var(--blue-deep) !important;
+    box-shadow: 0 0 18px rgba(10, 171, 241, 0.65);
+    transform: translateY(-2px);
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--white);
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* --- CONTENEDORES --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-padding {
+    padding: 70px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.badge-celeste {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(10, 171, 241, 0.18);
+    border: 1px solid var(--celeste-neon);
+    color: var(--celeste-soft);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.section-title span {
+    color: var(--celeste-bright);
+}
+
+.section-desc {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--celeste-soft);
+    font-size: 1.05rem;
+}
+
+/* --- SECCIÓN QUIÉNES SOMOS (CON FOTO DEL CARRO DE FONDO) --- */
+.intro-section {
+    padding: 75px 0 90px;
+    position: relative;
+    background: 
+        linear-gradient(135deg, rgba(0, 25, 75, 0.92) 0%, rgba(0, 66, 176, 0.84) 50%, rgba(0, 20, 52, 0.94) 100%),
+        url('images/carro-plaza-fondo.jpeg') center center / cover no-repeat;
+    border-bottom: 2px solid var(--celeste-neon);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.intro-content h2 {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 3.2rem;
+    color: var(--white);
+    margin-bottom: 22px;
+    line-height: 1.15;
+    text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.intro-content h2 span {
+    color: var(--celeste-bright);
+}
+
+.intro-quote-box {
+    background: rgba(0, 25, 70, 0.88);
+    border: 2px solid var(--celeste-neon);
+    border-left: 6px solid var(--celeste-bright);
+    border-radius: var(--radius-md);
+    padding: 28px 30px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+.intro-quote-box p {
+    font-size: 1.25rem;
+    color: var(--white);
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.intro-features-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.feature-card {
+    background: rgba(0, 31, 84, 0.82);
+    border: 1px solid rgba(10, 171, 241, 0.35);
+    border-radius: var(--radius-sm);
+    padding: 16px 14px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background: rgba(10, 171, 241, 0.22);
+    border-color: var(--celeste-bright);
+    transform: translateY(-3px);
+}
+
+.feature-icon {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.feature-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--celeste-bright);
+    margin-bottom: 4px;
+}
+
+.feature-text {
+    font-size: 0.8rem;
+    color: var(--celeste-soft);
+}
+
+/* Foto de Quiénes Somos */
+.intro-photo-wrap {
+    position: relative;
+}
+
+.photo-inner-border {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 4px solid var(--celeste-neon);
+    box-shadow: 0 16px 40px rgba(0, 15, 45, 0.6), 0 0 24px rgba(10, 171, 241, 0.4);
+    background: var(--blue-deep);
+}
+
+.photo-inner-border img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: center 65%;
+    display: block;
+}
+
+.photo-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(0, 25, 70, 0.95) 0%, rgba(0, 25, 70, 0.7) 65%, transparent 100%);
+    padding: 24px 20px 18px;
+    color: var(--white);
+}
+
+.photo-label h4 {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 1.25rem;
+    color: var(--celeste-bright);
+    margin-bottom: 4px;
+}
+
+.photo-label p {
+    font-size: 0.86rem;
+    color: var(--celeste-soft);
+}
+
+/* ==================== ESTILOS DEL CARRUSEL INFINITO AUTOMÁTICO ==================== */
+.carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 20px;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+    border-radius: var(--radius-md);
+    padding: 14px 0 22px;
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel-viewport:active {
+    cursor: grabbing;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Botones de navegación */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 31, 84, 0.95);
+    border: 2px solid var(--celeste-neon);
+    color: var(--celeste-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.carousel-nav-btn:hover {
+    background: var(--celeste-neon);
+    color: var(--blue-deep);
+    box-shadow: 0 0 22px rgba(10, 171, 241, 0.8);
+    transform: translateY(-60%) scale(1.1);
+}
+
+.carousel-nav-btn.prev {
+    left: -22px;
+}
+
+.carousel-nav-btn.next {
+    right: -22px;
+}
+
+.carousel-nav-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.5;
+}
+
+/* Puntos indicadores */
+.carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1.5px solid var(--celeste-neon);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: var(--celeste-bright);
+    transform: scale(1.35);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+}
+
+/* Tarjeta de Producto */
+.delicias-section {
+    background: rgba(0, 25, 70, 0.55);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.delicia-card {
+    background: #ffffff;
+    color: var(--text-dark);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.delicia-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--celeste-neon);
+    box-shadow: 0 16px 36px rgba(10, 171, 241, 0.25);
+}
+
+.delicia-img-frame {
+    height: 200px;
+    position: relative;
+    background: var(--celeste-bg);
+    overflow: hidden;
+}
+
+.delicia-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    pointer-events: none;
+}
+
+.delicia-card:hover .delicia-img-frame img {
+    transform: scale(1.06);
+}
+
+.delicia-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--blue-car);
+    color: var(--white);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    border: 1px solid var(--celeste-bright);
+}
+
+.delicia-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.delicia-title {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 1.35rem;
+    color: var(--blue-car);
+    margin-bottom: 8px;
+}
+
+.delicia-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    flex-grow: 1;
+}
+
+.delicia-info-box {
+    background: var(--celeste-bg);
+    border: 1px solid rgba(10, 171, 241, 0.2);
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    color: #1e3a8a;
+}
+
+.delicia-info-box strong {
+    display: block;
+    color: var(--blue-car);
+    margin-bottom: 3px;
+}
+
+/* Tarjeta de Galería */
+.gallery-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 260px;
+    border: 2px solid rgba(10, 171, 241, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--celeste-bright);
+    box-shadow: 0 12px 30px rgba(10, 171, 241, 0.35);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+    pointer-events: none;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.06);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 25, 70, 0.92) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+}
+
+.gallery-overlay p {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* --- DÓNDE ENCONTRARNOS / FERIA DE LAS PULGAS Y HORARIOS --- */
+.location-section {
+    background: rgba(0, 20, 55, 0.65);
+    border-top: 1px solid var(--border-light);
+}
+
+.location-container-card {
+    background: #ffffff;
+    color: var(--text-dark);
+    border-radius: var(--radius-lg);
+    padding: 45px 40px;
+    box-shadow: var(--shadow-card);
+    border: 2px solid var(--celeste-neon);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.location-info h3 {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 2.1rem;
+    color: var(--blue-car);
+    margin-bottom: 12px;
+}
+
+.location-info p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.location-badge-spot {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--celeste-bg);
+    border: 1px solid var(--celeste-neon);
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+}
+
+.spot-icon {
+    font-size: 2.2rem;
+    color: var(--blue-car);
+    flex-shrink: 0;
+}
+
+.spot-text strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--blue-car);
+}
+
+.spot-text span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.schedule-badge-spot {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+}
+
+.schedule-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.schedule-text strong {
+    display: block;
+    font-size: 1.05rem;
+    color: #166534;
+}
+
+.schedule-text span {
+    font-size: 0.9rem;
+    color: #15803d;
+    font-weight: 500;
+}
+
+.btn-maps {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue-car);
+    color: var(--white) !important;
+    padding: 14px 26px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 66, 176, 0.3);
+    border: 2px solid var(--celeste-neon);
+}
+
+.btn-maps:hover {
+    background: var(--celeste-neon);
+    color: var(--blue-deep) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(10, 171, 241, 0.5);
+}
+
+.location-extra-box {
+    background: var(--celeste-bg);
+    border: 1px solid rgba(10, 171, 241, 0.3);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.location-extra-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.extra-icon {
+    font-size: 1.3rem;
+    color: var(--blue-car);
+    line-height: 1;
+}
+
+.extra-text strong {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--blue-car);
+    margin-bottom: 2px;
+}
+
+.extra-text span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --- FORMULARIO WHATSAPP PARA EVENTOS --- */
+.event-form-section {
+    background: linear-gradient(180deg, rgba(0, 20, 55, 0.8) 0%, rgba(0, 31, 84, 0.95) 100%);
+    border-top: 1px solid var(--border-light);
+    position: relative;
+}
+
+.event-form-card {
+    background: #ffffff;
+    color: var(--text-dark);
+    border-radius: var(--radius-lg);
+    padding: 45px 40px;
+    box-shadow: var(--shadow-card);
+    border: 2px solid var(--celeste-neon);
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.event-form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.event-form-header h3 {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 2.2rem;
+    color: var(--blue-car);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.event-form-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.whatsapp-redirect-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid #cbd5e1;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: all 0.25s ease;
+    background: #f8fafc;
+}
+
+.form-input:focus {
+    outline: 3px solid var(--celeste-neon);
+    outline-offset: 2px;
+    border-color: var(--celeste-neon);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 171, 241, 0.25);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 95px;
+}
+
+.btn-whatsapp-submit {
+    background: var(--whatsapp-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 28px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    width: 100%;
+}
+
+.btn-whatsapp-submit:hover {
+    background: var(--whatsapp-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+}
+
+.btn-whatsapp-submit svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.form-privacy-note {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    background: var(--blue-darkest);
+    border-top: 2px solid var(--celeste-neon);
+    padding: 35px 0 22px;
+    text-align: center;
+    color: var(--celeste-soft);
+    font-size: 0.88rem;
+}
+
+.footer-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.footer-logo-wrap .logo-frame {
+    position: relative;
+    background: #ffffff;
+    padding: 3px 8px;
+    border-radius: 40px;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.footer-logo-wrap .logo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--celeste-neon);
+    border-radius: 40px;
+    pointer-events: none;
+}
+
+.footer-logo-wrap img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.footer-logo-wrap span {
+    font-family: 'Fredoka', cursive, sans-serif;
+    font-size: 1.35rem;
+    color: var(--white);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--celeste-soft);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--celeste-bright);
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 968px) {
+    .intro-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .intro-quote-box {
+        text-align: left;
+    }
+    .intro-photo-wrap {
+        max-width: 440px;
+        margin: 0 auto;
+    }
+    .location-container-card {
+        grid-template-columns: 1fr;
+        padding: 30px 22px;
+    }
+    .event-form-card {
+        padding: 30px 20px;
+    }
+    .carousel-nav-btn.prev {
+        left: -8px;
+    }
+    .carousel-nav-btn.next {
+        right: -8px;
+    }
+}
+
+@media (max-width: 680px) {
+    .carousel-nav-btn {
+        width: 38px;
+        height: 38px;
+    }
+    .carousel-nav-btn.prev {
+        left: 2px;
+    }
+    .carousel-nav-btn.next {
+        right: 2px;
+    }
+    .carousel-nav-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    .mobile-toggle {
+        display: block;
+    }
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--blue-deep);
+        flex-direction: column;
+        padding: 20px;
+        gap: 12px;
+        border-bottom: 2px solid var(--celeste-neon);
+        display: none;
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+    .intro-content h2 {
+        font-size: 2.3rem;
+    }
+    .intro-features-row {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .whatsapp-redirect-form {
+        grid-template-columns: 1fr;
+    }
+    .event-form-header h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- PRINT STYLES --- */
+@media print {
+    body { background: white !important; color: black !important; }
+    .site-header, .carousel-nav-btn, .carousel-dots,
+    .whatsapp-cta, .mobile-toggle, .nav-menu { display: none !important; }
+    .brand-text h1 { color: #001f54 !important; }
+    .section-title { color: #0042b0 !important; }
+    a { text-decoration: none; color: inherit; }
+}
+
